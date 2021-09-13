@@ -1,0 +1,10 @@
+# Package Files 
+*.jar
+*.war
+*.ear
+*.iml
+target/
+.idea/
+
+# mac os #
+.DS_Store
