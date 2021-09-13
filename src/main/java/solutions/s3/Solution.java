@@ -40,15 +40,15 @@ public class Solution {
     public void test() {
         Solution solution = new Solution();
 
-        Assert.assertEquals(solution.lengthOfLongestSubstring("abcabcbb"), 3);
+        Assert.assertEquals(3, solution.lengthOfLongestSubstring("abcabcbb"));
 
-        Assert.assertEquals(solution.lengthOfLongestSubstring("bbbbb"), 1);
+        Assert.assertEquals(1, solution.lengthOfLongestSubstring("bbbbb"));
 
-        Assert.assertEquals(solution.lengthOfLongestSubstring("pwwkew"), 3);
+        Assert.assertEquals(3, solution.lengthOfLongestSubstring("pwwkew"));
 
-        Assert.assertEquals(solution.lengthOfLongestSubstring(""), 0);
+        Assert.assertEquals(0, solution.lengthOfLongestSubstring(""));
 
-        Assert.assertEquals(solution.lengthOfLongestSubstring("qrsvbspk"), 5);
+        Assert.assertEquals(5, solution.lengthOfLongestSubstring("qrsvbspk"));
 
         System.out.println("ok");
     }

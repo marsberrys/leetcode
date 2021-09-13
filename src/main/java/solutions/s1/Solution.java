@@ -33,15 +33,15 @@ public class Solution {
 
         int[] nums = new int[]{2,7,11,15};
         int target = 9;
-        Assert.assertArrayEquals(solution.twoSum(nums, target), new int[]{0, 1});
+        Assert.assertArrayEquals(new int[]{0, 1}, solution.twoSum(nums, target));
 
         nums = new int[]{3,2,4};
         target = 6;
-        Assert.assertArrayEquals(solution.twoSum(nums, target), new int[]{1,2});
+        Assert.assertArrayEquals(new int[]{1,2}, solution.twoSum(nums, target));
 
         nums = new int[]{3,3};
         target = 6;
-        Assert.assertArrayEquals(solution.twoSum(nums, target), new int[]{0,1});
+        Assert.assertArrayEquals(new int[]{0,1}, solution.twoSum(nums, target));
 
         System.out.println("ok");
     }
