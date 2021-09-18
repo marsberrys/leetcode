@@ -48,8 +48,6 @@ public class Solution {
     public void test() {
         Solution solution = new Solution();
 
-        solution.longestPalindrome("babad");
-
         Assert.assertEquals("bab", solution.longestPalindrome("babad"));
 
         Assert.assertEquals("bb", solution.longestPalindrome("cbbd"));
