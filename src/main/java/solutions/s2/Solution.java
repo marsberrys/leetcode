@@ -28,7 +28,7 @@ public class Solution {
                 n2 = l2.val;
                 l2 = l2.next;
             }
-            int sum = n1 + n2 + current.val;
+            int sum = n1 + n2 + over;
             over = sum / 10;
             current.val = sum % 10;
             if(over > 0 || l1 != null || l2 != null) {
