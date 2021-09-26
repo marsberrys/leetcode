@@ -16,7 +16,7 @@ import java.util.Map;
 public class Solution {
 
     /**
-     * 朴素实现
+     * 朴素匹配实现
      * @param haystack
      * @param needle
      * @return
