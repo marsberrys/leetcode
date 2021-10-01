@@ -25,17 +25,15 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
+        Assert.assertEquals(321, reverse(123));
 
-        Assert.assertEquals(321, solution.reverse(123));
+        Assert.assertEquals(-321, reverse(-123));
 
-        Assert.assertEquals(-321, solution.reverse(-123));
+        Assert.assertEquals(21, reverse(120));
 
-        Assert.assertEquals(21, solution.reverse(120));
+        Assert.assertEquals(0, reverse(0));
 
-        Assert.assertEquals(0, solution.reverse(0));
-
-        Assert.assertEquals(0, solution.reverse(1534236469));
+        Assert.assertEquals(0, reverse(1534236469));
 
         System.out.println("ok");
     }

@@ -17,9 +17,7 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
-
-        Assert.assertEquals(0, solution.minDistance("1.01", "1.001"));
+        Assert.assertEquals(0, minDistance("1.01", "1.001"));
 
         System.out.println("ok");
     }

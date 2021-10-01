@@ -49,17 +49,16 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(false, solution.isMatch("aa", "a"));
+        Assert.assertEquals(false, isMatch("aa", "a"));
 
-        Assert.assertEquals(true, solution.isMatch("aa", "a*"));
+        Assert.assertEquals(true, isMatch("aa", "a*"));
 
-        Assert.assertEquals(true, solution.isMatch("ab", ".*"));
+        Assert.assertEquals(true, isMatch("ab", ".*"));
 
-        Assert.assertEquals(true, solution.isMatch("aab", "c*a*b"));
+        Assert.assertEquals(true, isMatch("aab", "c*a*b"));
 
-        Assert.assertEquals(false, solution.isMatch("mississippi", "mis*is*p*."));
+        Assert.assertEquals(false, isMatch("mississippi", "mis*is*p*."));
 
         System.out.println("ok");
     }

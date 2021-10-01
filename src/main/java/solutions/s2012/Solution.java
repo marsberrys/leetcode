@@ -54,21 +54,20 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(2, solution.sumOfBeauties(new int[]{1, 2, 3}));
+        Assert.assertEquals(2, sumOfBeauties(new int[]{1, 2, 3}));
 
-        Assert.assertEquals(1, solution.sumOfBeauties(new int[]{2, 4, 6, 4}));
+        Assert.assertEquals(1, sumOfBeauties(new int[]{2, 4, 6, 4}));
 
-        Assert.assertEquals(0, solution.sumOfBeauties(new int[]{3, 2, 1}));
+        Assert.assertEquals(0, sumOfBeauties(new int[]{3, 2, 1}));
 
-        Assert.assertEquals(4, solution.sumOfBeauties(new int[]{1, 2, 3, 4}));
+        Assert.assertEquals(4, sumOfBeauties(new int[]{1, 2, 3, 4}));
 
-        Assert.assertEquals(13, solution.sumOfBeauties(new int[]{3, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
+        Assert.assertEquals(13, sumOfBeauties(new int[]{3, 2, 3, 4, 5, 6, 7, 8, 9, 10}));
 
-        Assert.assertEquals(7, solution.sumOfBeauties(new int[]{3, 2, 3, 4, 5, 6, 3, 8, 9, 10}));
+        Assert.assertEquals(7, sumOfBeauties(new int[]{3, 2, 3, 4, 5, 6, 3, 8, 9, 10}));
 
-        Assert.assertEquals(5, solution.sumOfBeauties(new int[]{3, 2, 4, 1, 5, 8, 6, 7, 9, 10}));
+        Assert.assertEquals(5, sumOfBeauties(new int[]{3, 2, 4, 1, 5, 8, 6, 7, 9, 10}));
 
         System.out.println("ok");
     }

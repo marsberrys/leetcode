@@ -67,16 +67,15 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(6, solution.trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
+        Assert.assertEquals(6, trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
 
-        Assert.assertEquals(9, solution.trap(new int[]{4,2,0,3,2,5}));
+        Assert.assertEquals(9, trap(new int[]{4,2,0,3,2,5}));
 
 
-        Assert.assertEquals(6, solution.trapDoublePointer(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
+        Assert.assertEquals(6, trapDoublePointer(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
 
-        Assert.assertEquals(9, solution.trapDoublePointer(new int[]{4,2,0,3,2,5}));
+        Assert.assertEquals(9, trapDoublePointer(new int[]{4,2,0,3,2,5}));
 
         System.out.println("ok");
     }

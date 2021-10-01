@@ -43,19 +43,18 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
         ListNode l1 = ListNode.buildListNodeWithNums(new int[] {2,4,3});
         ListNode l2 = ListNode.buildListNodeWithNums(new int[] {5,6,4});
-        Assert.assertTrue(solution.addTwoNumbers(l1, l2).assertListNodeEquals(new int[]{7,0,8}));
+        Assert.assertTrue(addTwoNumbers(l1, l2).assertListNodeEquals(new int[]{7,0,8}));
 
         l1 = ListNode.buildListNodeWithNums(new int[] {0});
         l2 = ListNode.buildListNodeWithNums(new int[] {0});
-        Assert.assertTrue(solution.addTwoNumbers(l1, l2).assertListNodeEquals(new int[]{0}));
+        Assert.assertTrue(addTwoNumbers(l1, l2).assertListNodeEquals(new int[]{0}));
 
         l1 = ListNode.buildListNodeWithNums(new int[] {9,9,9,9,9,9,9});
         l2 = ListNode.buildListNodeWithNums(new int[] {9,9,9,9});
-        Assert.assertTrue(solution.addTwoNumbers(l1, l2).assertListNodeEquals(new int[]{8,9,9,9,0,0,0,1}));
+        Assert.assertTrue(addTwoNumbers(l1, l2).assertListNodeEquals(new int[]{8,9,9,9,0,0,0,1}));
 
         System.out.println("ok");
     }

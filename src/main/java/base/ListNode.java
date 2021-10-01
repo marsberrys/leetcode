@@ -36,7 +36,12 @@ public class ListNode {
             return false;
         }
 
-        return assertTowListNode(l1.next, l2.next);
+        if(l1.val == l2.val) {
+            boolean result = assertTowListNode(l1.next, l2.next);
+            return result;
+        }
+
+        return false;
     }
 
     public static ListNode buildListNodeWithNums(int[] nums) {

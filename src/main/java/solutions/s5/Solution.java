@@ -44,17 +44,61 @@ public class Solution {
         return s.substring(begin, begin + maxLen);
     }
 
+    /**
+     * 中心扩展法
+     * @param s
+     * @return
+     */
+    public String longestPalindromeCenterExpansion(String s) {
+        int len = s.length();
+        if(len < 2) {
+            return s;
+        }
+
+
+        int begin = 0;
+        int maxLen = 1;
+        char[] charArray = s.toCharArray();
+        for (int i = 0; i < len - 1; i++) {
+            int lenOfCenterSelf = expansionCenter(charArray, i, i);
+            int lenOfCenterSelfAndNext = expansionCenter(charArray, i, i + 1);
+
+            int currentMaxLen = Math.max(lenOfCenterSelf, lenOfCenterSelfAndNext);
+            if(currentMaxLen > maxLen) {
+                maxLen = currentMaxLen;
+                begin = i - (currentMaxLen - 1) / 2;
+            }
+        }
+
+        return s.substring(begin, begin + maxLen);
+    }
+
+    private int expansionCenter(char[] chars, int left, int right) {
+        while(left >= 0 && right < chars.length && chars[left] == chars[right]) {
+            left--;
+            right++;
+        }
+
+        return right - left - 1;
+    }
+
     @Test
     public void test() {
-        Solution solution = new Solution();
+        Assert.assertEquals("bab", longestPalindrome("babad"));
 
-        Assert.assertEquals("bab", solution.longestPalindrome("babad"));
+        Assert.assertEquals("bb", longestPalindrome("cbbd"));
 
-        Assert.assertEquals("bb", solution.longestPalindrome("cbbd"));
+        Assert.assertEquals("a", longestPalindrome("a"));
 
-        Assert.assertEquals("a", solution.longestPalindrome("a"));
+        Assert.assertEquals("a", longestPalindrome("ac"));
 
-        Assert.assertEquals("a", solution.longestPalindrome("ac"));
+        Assert.assertEquals("bab", longestPalindromeCenterExpansion("babad"));
+
+        Assert.assertEquals("bb", longestPalindromeCenterExpansion("cbbd"));
+
+        Assert.assertEquals("a", longestPalindromeCenterExpansion("a"));
+
+        Assert.assertEquals("a", longestPalindromeCenterExpansion("ac"));
 
         System.out.println("ok");
     }

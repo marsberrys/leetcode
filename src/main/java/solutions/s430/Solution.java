@@ -24,8 +24,6 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
-
         Assert.assertArrayEquals(new int[]{1,2,3,7,8,11,12,9,10,4,5,6}, flattenNums(new int[]{1,2,3,4,5,6,-1,-1,-1,7,8,9,10,-1,-1,11,12}));
 
         Assert.assertArrayEquals(new int[]{1,3,2}, flattenNums(new int[]{1,2,-1,3}));

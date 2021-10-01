@@ -33,11 +33,10 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(3, solution.getSum(1, 2));
+        Assert.assertEquals(3, getSum(1, 2));
 
-        Assert.assertEquals(5, solution.getSum(2, 3));
+        Assert.assertEquals(5, getSum(2, 3));
 
         System.out.println("ok");
     }

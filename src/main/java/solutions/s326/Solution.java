@@ -31,15 +31,14 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(true, solution.isPowerOfThree(27));
+        Assert.assertEquals(true, isPowerOfThree(27));
 
-        Assert.assertEquals(false, solution.isPowerOfThree(0));
+        Assert.assertEquals(false, isPowerOfThree(0));
 
-        Assert.assertEquals(true, solution.isPowerOfThree(9));
+        Assert.assertEquals(true, isPowerOfThree(9));
 
-        Assert.assertEquals(false, solution.isPowerOfThree(45));
+        Assert.assertEquals(false, isPowerOfThree(45));
 
         System.out.println("ok");
     }

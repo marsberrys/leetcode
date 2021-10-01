@@ -44,17 +44,16 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(2.0000d, solution.findMedianSortedArrays(new int[] {1,3}, new int[] {2}),  0.0001d);
+        Assert.assertEquals(2.0000d, findMedianSortedArrays(new int[] {1,3}, new int[] {2}),  0.0001d);
 
-        Assert.assertEquals(2.5000d, solution.findMedianSortedArrays(new int[] {1,2}, new int[] {3,4}),  0.0001d);
+        Assert.assertEquals(2.5000d, findMedianSortedArrays(new int[] {1,2}, new int[] {3,4}),  0.0001d);
 
-        Assert.assertEquals(0d, solution.findMedianSortedArrays(new int[] {0,0}, new int[] {0,0}),  0.0001d);
+        Assert.assertEquals(0d, findMedianSortedArrays(new int[] {0,0}, new int[] {0,0}),  0.0001d);
 
-        Assert.assertEquals(1d, solution.findMedianSortedArrays(new int[] {}, new int[] {1}),  0.0001d);
+        Assert.assertEquals(1d, findMedianSortedArrays(new int[] {}, new int[] {1}),  0.0001d);
 
-        Assert.assertEquals(2d, solution.findMedianSortedArrays(new int[] {2}, new int[] {}),  0.0001d);
+        Assert.assertEquals(2d, findMedianSortedArrays(new int[] {2}, new int[] {}),  0.0001d);
 
         System.out.println("ok");
     }

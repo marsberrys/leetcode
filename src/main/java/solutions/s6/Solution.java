@@ -37,15 +37,13 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
+        Assert.assertEquals("PAHNAPLSIIGYIR", convert("PAYPALISHIRING", 3));
 
-        Assert.assertEquals("PAHNAPLSIIGYIR", solution.convert("PAYPALISHIRING", 3));
+        Assert.assertEquals("PINALSIGYAHRPI", convert("PAYPALISHIRING", 4));
 
-        Assert.assertEquals("PINALSIGYAHRPI", solution.convert("PAYPALISHIRING", 4));
+        Assert.assertEquals("A", convert("A", 1));
 
-        Assert.assertEquals("A", solution.convert("A", 1));
-
-        Assert.assertEquals("AB", solution.convert("AB", 1));
+        Assert.assertEquals("AB", convert("AB", 1));
 
         System.out.println("ok");
     }

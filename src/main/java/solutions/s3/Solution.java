@@ -4,7 +4,9 @@ import base.ListNode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -38,17 +40,16 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(3, solution.lengthOfLongestSubstring("abcabcbb"));
+        Assert.assertEquals(3, lengthOfLongestSubstring("abcabcbb"));
 
-        Assert.assertEquals(1, solution.lengthOfLongestSubstring("bbbbb"));
+        Assert.assertEquals(1, lengthOfLongestSubstring("bbbbb"));
 
-        Assert.assertEquals(3, solution.lengthOfLongestSubstring("pwwkew"));
+        Assert.assertEquals(3, lengthOfLongestSubstring("pwwkew"));
 
-        Assert.assertEquals(0, solution.lengthOfLongestSubstring(""));
+        Assert.assertEquals(0, lengthOfLongestSubstring(""));
 
-        Assert.assertEquals(5, solution.lengthOfLongestSubstring("qrsvbspk"));
+        Assert.assertEquals(5, lengthOfLongestSubstring("qrsvbspk"));
 
         System.out.println("ok");
     }

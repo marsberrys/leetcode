@@ -52,21 +52,20 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(2147483647, solution.myAtoi("2147483648"));
+        Assert.assertEquals(2147483647, myAtoi("2147483648"));
 
-        Assert.assertEquals(2147483646, solution.myAtoi("2147483646"));
+        Assert.assertEquals(2147483646, myAtoi("2147483646"));
 
-        Assert.assertEquals(42, solution.myAtoi("42"));
+        Assert.assertEquals(42, myAtoi("42"));
 
-        Assert.assertEquals(-42, solution.myAtoi("   -42"));
+        Assert.assertEquals(-42, myAtoi("   -42"));
 
-        Assert.assertEquals(4193, solution.myAtoi("4193 with words"));
+        Assert.assertEquals(4193, myAtoi("4193 with words"));
 
-        Assert.assertEquals(0, solution.myAtoi("words and 987"));
+        Assert.assertEquals(0, myAtoi("words and 987"));
 
-        Assert.assertEquals(-2147483648, solution.myAtoi("-91283472332"));
+        Assert.assertEquals(-2147483648, myAtoi("-91283472332"));
 
         System.out.println("ok");
     }

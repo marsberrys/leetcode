@@ -39,17 +39,16 @@ public class Solution {
 
     @Test
     public void test() {
-        Solution solution = new Solution();
 
-        Assert.assertEquals(true, solution.isPalindrome(121));
+        Assert.assertEquals(true, isPalindrome(121));
 
-        Assert.assertEquals(false, solution.isPalindrome(-121));
+        Assert.assertEquals(false, isPalindrome(-121));
 
-        Assert.assertEquals(false, solution.isPalindrome(10));
+        Assert.assertEquals(false, isPalindrome(10));
 
-        Assert.assertEquals(false, solution.isPalindrome(-101));
+        Assert.assertEquals(false, isPalindrome(-101));
 
-        Assert.assertEquals(true, solution.isPalindrome(11));
+        Assert.assertEquals(true, isPalindrome(11));
 
         System.out.println("ok");
     }
