@@ -1,7 +1,6 @@
 package base;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @Author weixun
@@ -11,6 +10,7 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
+    public TreeNode next;
 
 
      TreeNode() {}
@@ -23,12 +23,19 @@ public class TreeNode {
          this.right = right;
      }
 
+     TreeNode(int val, TreeNode left, TreeNode right, TreeNode next) {
+         this.val = val;
+         this.left = left;
+         this.right = right;
+         this.next = next;
+     }
+
      public int[] toPreOrderArray() {
          List<Integer> orderedList = preOrder(this);
          return orderedList == null ? null : orderedList.stream().mapToInt(Integer::valueOf).toArray();
      }
 
-     private List<Integer> preOrder(TreeNode node) {
+     public static List<Integer> preOrder(TreeNode node) {
          List<Integer> orderedList = new ArrayList<>();
          if(node != null) {
             orderedList.add(node.val);
@@ -43,7 +50,7 @@ public class TreeNode {
          return orderedList == null ? null : orderedList.stream().mapToInt(Integer::valueOf).toArray();
      }
 
-     private List<Integer> inOrder(TreeNode node) {
+     public static List<Integer> inOrder(TreeNode node) {
          List<Integer> orderedList = new ArrayList<>();
          if(node != null) {
             orderedList.addAll(inOrder(node.left));
@@ -58,7 +65,7 @@ public class TreeNode {
          return orderedList == null ? null : orderedList.stream().mapToInt(Integer::valueOf).toArray();
      }
 
-     private List<Integer> postOrder(TreeNode node) {
+     public static List<Integer> postOrder(TreeNode node) {
          List<Integer> orderedList = new ArrayList<>();
          if(node != null) {
             orderedList.addAll(postOrder(node.left));
@@ -68,48 +75,122 @@ public class TreeNode {
          return orderedList;
      }
 
-     public static TreeNode buildTreeByArray(Integer[] nums) {
-         if (null == nums || nums.length < 1) {
+     public Integer[] levelOrderArray() {
+         List<Integer> list = levelOrder(this);
+        return list == null ? null : list.toArray(new Integer[list.size()]);
+     }
+
+     public static List<Integer> levelOrder(TreeNode node) {
+        Queue<TreeNode> nq = new LinkedList<>();
+        List<Integer> res = new ArrayList<>();
+        nq.offer(node);
+
+        while(!nq.isEmpty()) {
+            int levelSize = nq.size();
+            List<Integer> levelRes = new ArrayList<>();
+            int nullCount = 0;
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode curr = nq.poll();
+                if(curr == null) {
+                    levelRes.add(null);
+                    nullCount++;
+                    continue;
+                }
+
+                levelRes.add(curr.val);
+                nq.offer(curr.left);
+                nq.offer(curr.right);
+            }
+            if(nullCount < levelSize) {
+                res.addAll(levelRes);
+            }
+        }
+
+        return res;
+     }
+
+     public boolean equals(Integer[] nums) {
+         Integer[] selfNums = this.levelOrderArray();
+         if(selfNums.length != nums.length) {
+             return false;
+         }
+
+         for (int i = 0; i < selfNums.length; i++) {
+             if(nums[i] != selfNums[i]) {
+                 return false;
+             }
+         }
+
+         return true;
+     }
+
+     public static TreeNode buildBinaryTree(Integer[] nums) {
+        if(nums == null || nums.length < 1) {
              return null;
-         }
+        }
 
-         Map<Integer, TreeNode> nodeMap = new HashMap<>();
+        Queue<TreeNode> nq = new LinkedList<>();
+        TreeNode head = new TreeNode(nums[0]);
+        nq.offer(head);
+
+        int i = 0;
+        int len = nums.length;
+        while(!nq.isEmpty() && i < len) {
+            int levelSize = nq.size();
+            for (int j = 0; j < levelSize; j++) {
+                TreeNode curr = nq.poll();
+                i++;
+                if(i >= len) {
+                    break;
+                }
+                if(nums[i] != null) {
+                    curr.left = new TreeNode(nums[i]);
+                    nq.offer(curr.left);
+                }
+                i++;
+                if(i >= len) {
+                    break;
+                }
+                if(i < len && nums[i] != null) {
+                    curr.right = new TreeNode(nums[i]);
+                    nq.offer(curr.right);
+                }
+            }
+        }
+
+        return head;
+     }
+
+
+     public static TreeNode buildPrefectBinaryTree(Integer[] nums) {
+         TreeNode head = null;
          int len = nums.length;
-         for (int i = 0; i <= len / 2; i++) {
-            if(nums[i] == null) {
-                continue;
-            }
-
-            if(null == nodeMap.get(i)) {
-                nodeMap.put(i, new TreeNode(nums[i]));
-            }
-
-            // 右 child
-            int rightChildIndex = (i + 1) * 2;
-            if(rightChildIndex < len && null != nums[rightChildIndex]) {
-                 if(null == nodeMap.get(rightChildIndex)) {
-                     nodeMap.put(rightChildIndex, new TreeNode(nums[rightChildIndex]));
-                 }
-                 nodeMap.get(i).right = nodeMap.get(rightChildIndex);
-            }
-
-            // 左 child
-            int leftChildIndex = rightChildIndex - 1;
-            if(leftChildIndex < len && null != nums[leftChildIndex]) {
-                 if(null == nodeMap.get(leftChildIndex)) {
-                     nodeMap.put(leftChildIndex, new TreeNode(nums[leftChildIndex]));
-                 }
-                 nodeMap.get(i).left = nodeMap.get(leftChildIndex);
-            }
+         if(len <= 0) {
+             return head;
          }
 
-         return nodeMap.get(0);
+         TreeNode[] treeNodes = new TreeNode[len];
+         for (int i = 0; i < len; i++) {
+             treeNodes[i] = new TreeNode(nums[i]);
+         }
+
+         for (int i = 0; i < len; i++) {
+             int leftChildIndex = 2 * i + 1;
+             int rightChildIndex = 2 * (i + 1);
+             treeNodes[i].left = leftChildIndex >= len ? null :  treeNodes[leftChildIndex];
+             treeNodes[i].right = rightChildIndex >= len ? null :  treeNodes[rightChildIndex];
+         }
+
+         return treeNodes[0];
      }
 
     public static void main(String[] args) {
-        TreeNode node = TreeNode.buildTreeByArray(new Integer[]{10,5,-3,3,2,null,11,3,-2,null,1});
+        TreeNode node = TreeNode.buildBinaryTree(new Integer[]{10,5,-3,3,2,null,11,3,-2,null,1});
         System.out.println(Arrays.toString(node.toPreOrderArray()));
         System.out.println(Arrays.toString(node.toInOrderArray()));
         System.out.println(Arrays.toString(node.toPostOrderArray()));
+        System.out.println(Arrays.toString(node.levelOrderArray()));
+        TreeNode node2 = TreeNode.buildBinaryTree(new Integer[]{1,2,3,null,null,4,5});
+        System.out.println(Arrays.toString(node2.levelOrderArray()));
     }
 }

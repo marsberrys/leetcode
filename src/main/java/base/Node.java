@@ -1,7 +1,10 @@
 package base;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 /**
@@ -14,6 +17,7 @@ public class Node {
     public Node prev;
     public Node next;
     public Node child;
+    public List<Node> children;
 
     public Node() {}
 
@@ -37,6 +41,11 @@ public class Node {
         this.prev = prev;
         this.next = next;
         this.child = child;
+    }
+
+    public Node(int val, List<Node> children) {
+        this.val = val;
+        this.children = children;
     }
 
     public static Node dfs(Node head) {
@@ -112,6 +121,42 @@ public class Node {
     }
 
     /**
+     * N 叉树构建
+     * @param nums
+     * @return
+     */
+    public static Node buildMultiChildrenNodeRowByRowByNums(Integer[] nums) {
+        int len = nums.length;
+        if(len <= 0) {
+            return null;
+        }
+
+        Queue<Node> nq = new LinkedList<>();
+        Node head = new Node(nums[0]);
+        nq.offer(head);
+        if(len < 3) {
+            return head;
+        }
+
+        for (int i = 2; i < len; i++) {
+            List<Node> children = new ArrayList<>();
+            while(i < len && nums[i] != null)  {
+                Node cur = new Node(nums[i]);
+                nq.offer(cur);
+                children.add(cur);
+                i++;
+            }
+
+            Node parent = nq.poll();
+            if(children.size() > 0) {
+               parent.children = children;
+            }
+        }
+
+        return head;
+    }
+
+    /**
      * 单级双链表转数组
      * @param node
      * @return
@@ -128,9 +173,13 @@ public class Node {
     }
 
     public static void main(String[] args) {
-        Node head = buildMultilevelNodeRowByRowByNums(new int[]{1,2,3,4,5,6,-1,-1,-1,7,8,9,10,-1,-1,11,12});
-        dfs(head);
-        List<Integer> numList = flattenNodeToNums(head);
-        System.out.println(numList == null ? "null" : numList.stream().map(String::valueOf).collect(Collectors.joining(",")));
+        // Node head = buildMultilevelNodeRowByRowByNums(new int[]{1,2,3,4,5,6,-1,-1,-1,7,8,9,10,-1,-1,11,12});
+        // dfs(head);
+        // List<Integer> numList = flattenNodeToNums(head);
+        // System.out.println(numList == null ? "null" : numList.stream().map(String::valueOf).collect(Collectors.joining(",")));
+
+        Node multiChildrenNode = buildMultiChildrenNodeRowByRowByNums(new Integer[]{1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14});
+
+        System.out.println("ok");
     }
 }
