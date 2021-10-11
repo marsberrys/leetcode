@@ -1,5 +1,8 @@
 package base;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author weixun
  * @Date 2021-09-10
@@ -24,7 +27,7 @@ public class ListNode {
     }
 
     public Boolean assertListNodeEquals(int[] nums) {
-        return assertTowListNode(this, buildListNodeWithNums(nums));
+        return assertTowListNode(this, buildListNode(nums));
     }
 
     public static Boolean assertTowListNode(ListNode l1, ListNode l2) {
@@ -44,7 +47,7 @@ public class ListNode {
         return false;
     }
 
-    public static ListNode buildListNodeWithNums(int[] nums) {
+    public static ListNode buildListNode(int[] nums) {
         if(nums.length <= 0) {
             return null;
         }
@@ -57,6 +60,30 @@ public class ListNode {
                 cursor.next = new ListNode();
                 cursor = cursor.next;
             }
+        }
+
+        return head;
+    }
+
+    public static ListNode buildListNodeWithCircle(int[] nums, int circleIndex) {
+        if(nums.length <= 0) {
+            return null;
+        }
+
+        Map<Integer, ListNode> map = new HashMap<>();
+        ListNode head = new ListNode();
+        ListNode cursor = head;
+        for (int i = 0; i < nums.length; i++) {
+            cursor.val = nums[i];
+            map.put(i, cursor);
+            if(i < nums.length - 1) {
+                cursor.next = new ListNode();
+                cursor = cursor.next;
+            }
+        }
+
+        if(circleIndex >= 0) {
+            cursor.next = map.get(circleIndex);
         }
 
         return head;

@@ -3,10 +3,6 @@ package solutions.s725;
 import base.ListNode;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * 725. 分隔链表
  * @Author weixun
@@ -49,13 +45,13 @@ public class Solution {
     @Test
     public void test() {
 
-        System.out.println(splitListToParts(ListNode.buildListNodeWithNums(new int[]{1,2,3}), 5));
+        System.out.println(splitListToParts(ListNode.buildListNode(new int[]{1,2,3}), 5));
 
-        System.out.println(splitListToParts(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5,6,7,8,9,10}), 3));
+        System.out.println(splitListToParts(ListNode.buildListNode(new int[]{1,2,3,4,5,6,7,8,9,10}), 3));
 
-        System.out.println(splitListToParts(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5,6,7,8,9,10}), 3));
+        System.out.println(splitListToParts(ListNode.buildListNode(new int[]{1,2,3,4,5,6,7,8,9,10}), 3));
 
-        System.out.println(splitListToParts(ListNode.buildListNodeWithNums(new int[]{}), 3));
+        System.out.println(splitListToParts(ListNode.buildListNode(new int[]{}), 3));
 
         System.out.println("ok");
     }

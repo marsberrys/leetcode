@@ -1,10 +1,7 @@
 package solutions.s25;
 
 import base.ListNode;
-import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.List;
 
 /**
  * @Author weixun
@@ -99,21 +96,21 @@ public class Solution {
     @Test
     public void test() {
 
-        assert ListNode.buildListNodeWithNums(new int[]{2,1,4,3,5}).assertListNodeEquals(reverseKGroup(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}), 2));
+        assert ListNode.buildListNode(new int[]{2,1,4,3,5}).assertListNodeEquals(reverseKGroup(ListNode.buildListNode(new int[]{1,2,3,4,5}), 2));
 
-        assert ListNode.buildListNodeWithNums(new int[]{3,2,1,4,5}).assertListNodeEquals(reverseKGroup(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}), 3));
+        assert ListNode.buildListNode(new int[]{3,2,1,4,5}).assertListNodeEquals(reverseKGroup(ListNode.buildListNode(new int[]{1,2,3,4,5}), 3));
 
-        assert ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}).assertListNodeEquals(reverseKGroup(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}), 1));
+        assert ListNode.buildListNode(new int[]{1,2,3,4,5}).assertListNodeEquals(reverseKGroup(ListNode.buildListNode(new int[]{1,2,3,4,5}), 1));
 
-        assert ListNode.buildListNodeWithNums(new int[]{1}).assertListNodeEquals(reverseKGroup(ListNode.buildListNodeWithNums(new int[]{1}), 1));
+        assert ListNode.buildListNode(new int[]{1}).assertListNodeEquals(reverseKGroup(ListNode.buildListNode(new int[]{1}), 1));
 
-        assert ListNode.buildListNodeWithNums(new int[]{2,1,4,3,5}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}), 2));
+        assert ListNode.buildListNode(new int[]{2,1,4,3,5}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNode(new int[]{1,2,3,4,5}), 2));
 
-        assert ListNode.buildListNodeWithNums(new int[]{3,2,1,4,5}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}), 3));
+        assert ListNode.buildListNode(new int[]{3,2,1,4,5}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNode(new int[]{1,2,3,4,5}), 3));
 
-        assert ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5}), 1));
+        assert ListNode.buildListNode(new int[]{1,2,3,4,5}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNode(new int[]{1,2,3,4,5}), 1));
 
-        assert ListNode.buildListNodeWithNums(new int[]{1}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNodeWithNums(new int[]{1}), 1));
+        assert ListNode.buildListNode(new int[]{1}).assertListNodeEquals(reverseKGroup2(ListNode.buildListNode(new int[]{1}), 1));
 
         System.out.println("ok");
     }

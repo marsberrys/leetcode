@@ -1,7 +1,6 @@
 package solutions.s206;
 
 import base.ListNode;
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -31,11 +30,11 @@ public class Solution {
     @Test
     public void test() {
 
-        reverseList(ListNode.buildListNodeWithNums(new int[]{1,2,3,4,5})).assertListNodeEquals(new int[]{5,4,3,2,1});
+        reverseList(ListNode.buildListNode(new int[]{1,2,3,4,5})).assertListNodeEquals(new int[]{5,4,3,2,1});
 
-        reverseList(ListNode.buildListNodeWithNums(new int[]{1,2})).assertListNodeEquals(new int[]{2,1});
+        reverseList(ListNode.buildListNode(new int[]{1,2})).assertListNodeEquals(new int[]{2,1});
 
-        ListNode.assertTowListNode(reverseList(ListNode.buildListNodeWithNums(new int[]{})), ListNode.buildListNodeWithNums(new int[]{}));
+        ListNode.assertTowListNode(reverseList(ListNode.buildListNode(new int[]{})), ListNode.buildListNode(new int[]{}));
 
         System.out.println("ok");
     }
