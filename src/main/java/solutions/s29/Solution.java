@@ -13,17 +13,43 @@ import org.junit.Test;
 public class Solution {
 
     public int divide(int dividend, int divisor) {
-        int count = 0;
-        boolean isNeg = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
-        dividend = dividend > 0 ? dividend : -dividend;
-        divisor = divisor > 0 ? divisor : -divisor;
-
-        while(dividend > divisor) {
-            dividend -= divisor;
-            count++;
+        if(dividend == 0) {
+            return 0;
+        }
+        if(divisor == 1) {
+            return dividend;
+        }
+        if(divisor == -1) {
+            if(dividend == Integer.MIN_VALUE) {
+                return Integer.MAX_VALUE;
+            } else {
+                return -dividend;
+            }
+        }
+        if(divisor == Integer.MIN_VALUE) {
+            return dividend == Integer.MIN_VALUE ? 1 : 0;
         }
 
-        return isNeg ? -count : count ;
+        boolean isNeg = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
+        dividend = dividend > 0 ? -dividend : dividend;
+        divisor = divisor > 0 ? -divisor : divisor;
+
+        if(dividend >= divisor) {
+            return dividend > divisor ? 0 : (isNeg ? -1 : 1);
+        }
+
+        int res = 0;
+        while(dividend <= divisor) {
+            int a = dividend, b = divisor, cnt = 1;
+            while(a - b <= b) {
+                cnt += cnt;
+                b += b;
+            }
+            res += cnt;
+            dividend -= b;
+        }
+
+        return isNeg ? -res : res ;
     }
 
     @Test
@@ -32,6 +58,10 @@ public class Solution {
         Assert.assertEquals(3, divide(10, 3));
 
         Assert.assertEquals(-2, divide(7, -3));
+
+        Assert.assertEquals(-1, divide(1, -1));
+
+        Assert.assertEquals(-1, divide(10, -10));
 
         System.out.println("ok");
     }

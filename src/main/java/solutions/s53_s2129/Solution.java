@@ -1,26 +1,28 @@
-package solutions.s53;
+package solutions.s53_s2129;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * 53. 最大子序和
+ * 剑指 Offer 42. 连续子数组的最大和
  * @Author weixun
  * @Date 2021-10-02
  * @See https://leetcode-cn.com/problems/maximum-subarray/
+ * @See https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/
  */
 public class Solution {
 
     public int maxSubArray(int[] nums) {
         int len = nums.length;
-        if(len == 1) {
-            return nums[0];
+        if(len == 0) {
+            return 0;
         }
 
-        int prev = 0, max = Integer.MIN_VALUE;
+        int dp = 0, max = nums[0];
         for (int num : nums) {
-            prev = Math.max(prev + num, num);
-            max = Math.max(max, prev);
+            dp = Math.max(dp + num, num);
+            max = Math.max(max, dp);
         }
 
         return max;

@@ -1,8 +1,6 @@
-package solutions.s141;
+package solutions.s142_s2298;
 
 import base.ListNode;
-import base.TreeNode;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashSet;
@@ -10,10 +8,12 @@ import java.util.Set;
 
 
 /**
- * 141. 环形链表
+ * 142. 环形链表 II
+ * 面试题 02.08. 环路检测
  * @Author weixun
- * @Date 2021-10-10
- * @See https://leetcode-cn.com/problems/linked-list-cycle/
+ * @Date 2021-10-12
+ * https://leetcode-cn.com/problems/linked-list-cycle-ii/
+ * @See https://leetcode-cn.com/problems/linked-list-cycle-lcci/
  */
 public class Solution {
 
@@ -24,18 +24,18 @@ public class Solution {
      * @param head
      * @return
      */
-    public boolean hasCycle(ListNode head) {
+    public ListNode hasCycle(ListNode head) {
         Set<ListNode> searched = new HashSet<>();
 
         ListNode cur = head;
         while(cur != null) {
             if(!searched.add(cur)) {
-                return true;
+                return cur;
             }
             cur = cur.next;
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -45,38 +45,35 @@ public class Solution {
      * @param head
      * @return
      */
-    public boolean hasCycleQuickSlow(ListNode head) {
+    public ListNode hasCycleQuickSlow(ListNode head) {
         if(null == head || null == head.next) {
-            return false;
+            return null;
         }
         ListNode slow = head, quick = head;
         while(null != quick) {
             slow = slow.next;
             if(null == quick.next) {
-                return false;
+                return null;
             } else {
                 quick = quick.next.next;
             }
 
             if(slow == quick) {
-                return true;
+                ListNode p = head;
+                while(p != slow) {
+                    p = p.next;
+                    slow = slow.next;
+                }
+                return p;
             }
         }
 
-        return false;
+        return null;
     }
 
 
     @Test
     public void test() {
-
-        Assert.assertEquals(true, hasCycle(ListNode.buildListNodeWithCircle(new int[]{3,2,0,-4}, 1)));
-
-        Assert.assertEquals(true, hasCycle(ListNode.buildListNodeWithCircle(new int[]{1,2}, 0)));
-
-        Assert.assertEquals(true, hasCycleQuickSlow(ListNode.buildListNodeWithCircle(new int[]{3,2,0,-4}, 1)));
-
-        Assert.assertEquals(true, hasCycleQuickSlow(ListNode.buildListNodeWithCircle(new int[]{1,2}, 0)));
 
         System.out.println("ok");
     }
