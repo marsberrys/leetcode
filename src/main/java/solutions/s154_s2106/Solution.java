@@ -1,4 +1,4 @@
-package solutions.s154;
+package solutions.s154_s2106;
 
 import org.junit.Assert;
 import org.junit.Test;
