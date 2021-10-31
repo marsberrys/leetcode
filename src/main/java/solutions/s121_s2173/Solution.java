@@ -1,13 +1,15 @@
-package solutions.s121;
+package solutions.s121_s2173;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * 121. 买卖股票的最佳时机
+ * 剑指 Offer 63. 股票的最大利润
  * @Author weixun
  * @Date 2021-10-07
  * @See https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+ * @See https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/
  */
 public class Solution {
 
